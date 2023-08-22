@@ -86,9 +86,24 @@
 
                         </div>
                     </div>
+
                     <div class="col ">
+                   <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                <h4 class="card-title">Total expenses from payment providers (Stripe, PayPal)</h4>
+                                <h5 class="card-text">{{ total_expenses_payment }}€</h5>
+                              </div>
+
+                        </div>
                     </div>
                     <div class="col ">
+                        <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                <h4 class="card-title">Total expenses from store</h4>
+                                <h5 class="card-text">{{ total_store }}€</h5>
+                              </div>
+
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -210,6 +225,60 @@
                   </tr>
                   <tbody class="list" id="table-regions-by-revenue">
                   {% for product in product_data %}
+                    <tr>
+                      <td class="white-space-nowrap ps-0 country" style="width:32%">
+                        <div class="d-flex align-items-center">
+                          <h6 class="mb-0 me-3">{{loop.index}}. </h6>
+                            <div class="d-flex align-items-center">
+                              <p class="mb-0 ps-3 text-primary fw-bold fs--1">{{ product[0] }}</p>
+                            </div>
+                        </div>
+                      </td>
+
+                      <td class="align-middle text-end revenue" style="width:17%">
+                        <h6 class="mb-0">€{{ product[1] }}</h6>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <div class="row align-items-center py-1">
+                <div class="pagination d-none"></div>
+                <div class="col d-flex fs--1">
+                  <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p>
+                </div>
+                <div class="col-auto d-flex">
+
+                  <button class="btn btn-link px-1 me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left me-2"></span>Previous</button>
+                  <button class="btn btn-link px-1 ms-1" type="button" title="Next" data-list-pagination="next">Next<span class="fas fa-chevron-right ms-2"></span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+                          <div class="col-12 col-xl-6">
+            <div data-list='{"valueNames":["country","revenue"],"page":10}'>
+              <div class="mb-5 mt-7">
+                <h3>Top products by product type</h3>
+                <p class="text-700">Best performing types</p>
+              </div>
+              <div class="table-responsive">
+                <table class="table fs--2 mb-0">
+                  <thead>
+                    <tr>
+                      <th class="sort border-top border-200 ps-0 align-middle" scope="col" data-sort="country" style="width:32%">PRODUCT</th>
+                      <th class="sort border-top border-200 text-end align-middle" scope="col" data-sort="revenue" style="width:20%">REVENUE</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td></td>
+
+                    <td class="align-middle text-end py-4">
+                      <h4 class="mb-0 fw-normal">€{{ total_sales }}</h4>
+                    </td>
+                  </tr>
+                  <tbody class="list" id="table-regions-by-revenue">
+                  {% for product in product_data_merged %}
                     <tr>
                       <td class="white-space-nowrap ps-0 country" style="width:32%">
                         <div class="d-flex align-items-center">

@@ -170,6 +170,8 @@ def analytics():
         products = list(df.index.values)
         sales_by_product = df["Total sales"].tolist()
         product_data = []
+        for i in range(len(products)):
+            product_data.append((products[i], sales_by_product[i]))
         cur = conn.cursor()
         if request.method == "POST":
             cur.execute("SELECT * FROM expenses WHERE CAST(year AS INTEGER) >= ? AND CAST(year AS INTEGER) <= ? AND CAST(month AS INTEGER) >= ? AND CAST(month AS INTEGER) <= ?",(year_from,year_to,month_from,month_to))
@@ -185,11 +187,25 @@ def analytics():
         stripe_eu_total, stripe_non_eu_total, total_paypal, total_earnings = calculate_from_df(df)
         total_store = SHOPIFY + total_earnings * 0.02
         total_stripe = stripe_non_eu_total + stripe_eu_total
+
+        total_expenses_payment = total_stripe + total_paypal
         total_net = total_earnings - total_stripe - total_paypal - total_store - ad_expenses
+
+        df = pd.DataFrame(data)
+        df["Product"] = df['Product'].str.split(' - ', n=1)
+        df["Product"] = df['Product'].apply(lambda x: x if x is None else x[0])
+        df["Product"] = df['Product'].apply(lambda x: "SLCTD collections." if x =="SLCTD collections" else x)
+        df["Product"] = df['Product'].apply(lambda x: "Sickrate & SIIK Essentials I" if x =="Sickrate & SIIK Essentials" else x)
+
+        df = df.groupby("Product").sum()
+        df = df.sort_values(['Total sales'], ascending=False)
+        products = list(df.index.values)
+        sales_by_product = df["Total sales"].tolist()
+        product_data_merged = []
         for i in range(len(products)):
-            product_data.append((products[i], sales_by_product[i]))
+            product_data_merged.append((products[i], sales_by_product[i]))
         return render_template(
-        "analytics.html", date_data=date_data,eu_data=eu_data,country_data=country_data,city_data=city_data,total_sales=total_sales, product_data=product_data,dates=dates_placeholder,total_earnings=total_earnings,total_net=total_net
+        "analytics.html", date_data=date_data,eu_data=eu_data,country_data=country_data,city_data=city_data,total_sales=total_sales, product_data=product_data,dates=dates_placeholder,total_earnings=total_earnings,total_net=total_net,product_data_merged=product_data_merged,total_expenses_payment=total_expenses_payment,total_store=total_store
     )
     else:
         flash('No purchases in date range')
