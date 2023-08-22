@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="../static/assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="../static/assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="../static/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/vendors/simplebar/simplebar.min.js"></script>
+    <script src="../static/assets/js/config.js"></script>
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="../static/vendors/simplebar/simplebar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="../static/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+    <link href="../static/assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+    <link href="../static/assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="../static/assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+{% block title %} Analytics {% endblock %}
+{% block content %}
+    <script src="../static/vendors/popper/popper.min.js"></script>
+    <script src="../static/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="../static/vendors/anchorjs/anchor.min.js"></script>
+    <script src="../static/vendors/is/is.min.js"></script>
+    <script src="../static/vendors/fontawesome/all.min.js"></script>
+    <script src="../static/vendors/lodash/lodash.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="../static/vendors/list.js/list.min.js"></script>
+    <script src="../static/vendors/feather-icons/feather.min.js"></script>
+    <script src="../static/vendors/dayjs/dayjs.min.js"></script>
+    <script src="../static/vendors/echarts/echarts.min.js"></script>
+    <script src="../static/vendors/prism/prism.js"></script>
+    <script src="../static/assets/js/phoenix.js"></script>
+        <script src="../static/assets/js/flatpickr.js"></script>
+        <link href="../static/vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
+          <div class="content">
+        <div class="pb-5">
+          <div class="row">
+            <div class="col">
+              <div class="mb-8">
+                <h1>Analytics</h1>
+                <h5 class="text-700 fw-semi-bold">Insights into SIIK Sounds</h5>
+              </div>
+            </div>
+              <div class="col">
+
+              </div>
+          </div>
+<div class="container">
+
+                <div class="row mb-10">
+                    <form method="post">
+                        <label class="form-label" for="timepicker2">Select Time Range</label>
+                        <input name="dates" class="form-control datetimepicker flatpickr-input" id="timepicker2" type="text" placeholder="d/m/y to d/m/y" data-options="{&quot;mode&quot;:&quot;range&quot;,&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}" readonly="readonly">
+                        <input type="submit" class="btn btn-primary w-25 mt-2" />
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+          </div>
+{% endblock %}

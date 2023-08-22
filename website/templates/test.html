@@ -1,0 +1,19 @@
+<div>
+    <div class="container">
+        <h1>Payouts in months</h1>
+            <div class="row">
+            {% for date in date_data %}
+                <a href="{{ url_for('views.payouts_description', year=date[0], month=date[1])}}">
+                    <div class="col-md-3 m-2">
+                        <div class="card" style="width: 18rem;">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ date[0] }} {{ date[1] }}</h5>
+                            <p class="card-text">Payouts</p>
+                          </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
