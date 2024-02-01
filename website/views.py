@@ -272,7 +272,7 @@ def payouts_description():
         stripe_eu_total_doxed=round(stripe_eu_total_doxed/2,2),
         stripe_non_eu_total_doxed=round(stripe_non_eu_total_doxed/2,2),
         paypal_total_doxed=round(paypal_total_doxed/2,2),
-        total_payout_doxed=round(total_payout_doxed,2),
+        total_payout_doxed=round(total_payout_doxed*0.8,2),
         store_expenses_siik=round(store_expenses_siik,2),
         total_payout_siik=round(total_payout_siik,2),
         month=args.get("month", default="", type=str),
